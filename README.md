@@ -20,3 +20,12 @@ You probably also want `virt-manager`, which includes a spice compatible viewer.
 3) Define the XMLs in this repository for libvirt. `virsh define /path/to/this/repo/networks/default.xml` and then `virsh define /path/to/this/repo/win10.xml`.
 
 At this point you can start the VM with `virt-manager` or `virsh` directly.
+
+
+### Current benchmarks
+
+Guest: (Novabench)
+CPU: 660
+RAM: 230 (26984 MB/s)
+Disk: 197 (1679 MB/s Read / 1386 MB/s Write)
+GPU: Fails to complete a 6 fps
