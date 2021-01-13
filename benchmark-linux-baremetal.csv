@@ -1,0 +1,83 @@
+linux-baremetal,
+
+"GEGL - Operation: Crop",
+Lower Results Are Better
+
+"performance mode",8.561,8.482,8.441
+
+"GEGL - Operation: Scale",
+Lower Results Are Better
+
+"performance mode",5.362,5.318,5.35
+
+"GEGL - Operation: Cartoon",
+Lower Results Are Better
+
+"performance mode",89.708,91.402,92.169
+
+"GEGL - Operation: Reflect",
+Lower Results Are Better
+
+"performance mode",33.287,33.246,33.121
+
+"GEGL - Operation: Antialias",
+Lower Results Are Better
+
+"performance mode",38.983,40.111,39.95
+
+"GEGL - Operation: Tile Glass",
+Lower Results Are Better
+
+"performance mode",32.081,32.286,32.132
+
+"GEGL - Operation: Wavelet Blur",
+Lower Results Are Better
+
+"performance mode",59.843,59.865,59.584
+
+"GEGL - Operation: Color Enhance",
+Lower Results Are Better
+
+"performance mode",56.332,56.134,57.213
+
+"GEGL - Operation: Rotate 90 Degrees",
+Lower Results Are Better
+
+"performance mode",46.206,46.968,47.769
+
+"GIMP2.10.22 - Test: resize",
+Lower Results Are Better
+
+"performance mode",9.726,11.415,11.353,11.331,11.325,11.426,11.36,11.357,11.312,11.39,11.396,11.353
+
+"GIMP2.10.22 - Test: rotate",
+Lower Results Are Better
+
+"performance mode",11.54,11.478,11.514
+
+"GIMP2.10.22 - Test: auto-levels",
+Lower Results Are Better
+
+"performance mode",12.279,12.257,12.753
+
+"GIMP2.10.22 - Test: unsharp-mask",
+Lower Results Are Better
+
+"performance mode",13.99,16.611,16.373,16.464,16.527,16.47,16.438,16.457,16.387,16.45,16.38,16.48
+
+"LibreOffice - Test: 20 Documents To PDF",
+Lower Results Are Better
+
+"performance mode",7.887,6.977,6.974,6.952,6.969,6.994,6.968,6.992,6.986,6.956,6.974,6.985,6.977,6.981,7.108,7.186,7.249,7.342,7.005,7.021,7.021,7.002,7.034,7.009
+
+"GNU Octave Benchmark6.1.0 - ",
+Lower Results Are Better
+
+"performance mode",6.959,7,6.955,6.883,6.993
+
+"librsvg - Operation: SVG Files To PNG",
+Lower Results Are Better
+
+"performance mode",24.896,24.818,24.916
+
+

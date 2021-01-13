@@ -2,6 +2,8 @@
 
 These are my QEMU configurations for a Windows 10 VM on libvirt. Emphasis is given on performance and satisfying requirements for my workplace IT security.
 
+Benchmark results using Phoronix are found in the root directory.
+
 ## To use
 
 ### Prerequisites
@@ -21,11 +23,3 @@ You probably also want `virt-manager`, which includes a spice compatible viewer.
 
 At this point you can start the VM with `virt-manager` or `virsh` directly.
 
-
-### Current benchmarks
-
-Guest: (Novabench)
-CPU: 660
-RAM: 230 (26984 MB/s)
-Disk: 197 (1679 MB/s Read / 1386 MB/s Write)
-GPU: Fails to complete a 6 fps
