@@ -33,7 +33,9 @@ or other application using the libvirt API.
     </hyperv>
     <vmport state='off'/>
   </features>
-  <cpu mode='host-model' check='partial'/>
+  <cpu mode='host-passthrough' check='none'>
+    <topology sockets='1' dies='1' cores='2' threads='2'/>
+  </cpu>
   <clock offset='localtime'>
     <timer name='rtc' tickpolicy='catchup'/>
     <timer name='pit' tickpolicy='delay'/>
