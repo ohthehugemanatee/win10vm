@@ -71,10 +71,9 @@ or other application using the libvirt API.
       <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
     <disk type='file' device='disk'>
-      <driver name='qemu' type='qcow2'/>
-      <source file='/home/ohthehugemanatee/Documents/win10.qcow2'/>
+      <driver name='qemu' type='raw' discard='unmap'/>
+      <source file='/home/ohthehugemanatee/Documents/win10.img'/>
       <target dev='vda' bus='virtio'/>
-      <boot order='1'/>
       <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
     </disk>
     <controller type='usb' index='0' model='qemu-xhci' ports='15'>
@@ -156,6 +155,12 @@ or other application using the libvirt API.
     </redirdev>
     <redirdev bus='usb' type='spicevmc'>
       <address type='usb' bus='0' port='3'/>
+    </redirdev>
+    <redirdev bus='usb' type='spicevmc'>
+      <address type='usb' bus='0' port='4'/>
+    </redirdev>
+    <redirdev bus='usb' type='spicevmc'>
+      <address type='usb' bus='0' port='5'/>
     </redirdev>
     <memballoon model='virtio'>
       <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
