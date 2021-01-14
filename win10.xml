@@ -96,7 +96,7 @@ or other application using the libvirt API.
     <interface type='network'>
       <mac address='52:54:00:74:5d:be'/>
       <source network='default'/>
-      <model type='e1000e'/>
+      <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
     </interface>
     <serial type='pty'>
