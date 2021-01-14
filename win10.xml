@@ -7,6 +7,7 @@ or other application using the libvirt API.
 
 <domain type='kvm'>
   <name>win10</name>
+  <uuid>8444b085-f0ab-484a-9904-e647293d04f9</uuid>
   <metadata>
     <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
       <libosinfo:os id="http://microsoft.com/win/10"/>
