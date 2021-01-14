@@ -27,7 +27,7 @@ At this point you can start the VM with `virt-manager` or `virsh` directly.
 ### Current benchmarks
 
 Guest: (Novabench)
-CPU: 683
+CPU: 690
 RAM Score: 224
 RAM Speed: 25314 MB/s
 Disk: 288
