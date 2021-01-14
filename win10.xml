@@ -15,6 +15,12 @@ or other application using the libvirt API.
   <memory unit='KiB'>8388608</memory>
   <currentMemory unit='KiB'>8388608</currentMemory>
   <vcpu placement='static'>4</vcpu>
+  <cputune>
+    <vcpupin vcpu='0' cpuset='1'/>
+    <vcpupin vcpu='1' cpuset='2'/>
+    <vcpupin vcpu='2' cpuset='3'/>
+    <vcpupin vcpu='3' cpuset='4'/>
+  </cputune>
   <os>
     <type arch='x86_64' machine='pc-q35-5.2'>hvm</type>
     <bootmenu enable='no'/>
@@ -33,7 +39,7 @@ or other application using the libvirt API.
     </hyperv>
     <vmport state='off'/>
   </features>
-  <cpu mode='host-passthrough' check='none'>
+  <cpu mode='host-passthrough' check='none' migratable='on'>
     <topology sockets='1' dies='1' cores='2' threads='2'/>
   </cpu>
   <clock offset='localtime'>
