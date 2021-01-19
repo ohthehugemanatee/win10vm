@@ -14,6 +14,11 @@ or other application using the libvirt API.
   </metadata>
   <memory unit='KiB'>8388608</memory>
   <currentMemory unit='KiB'>8388608</currentMemory>
+  <memoryBacking>
+    <hugepages>
+      <page size='1048576' unit='KiB'/>
+    </hugepages>
+  </memoryBacking>
   <vcpu placement='static'>6</vcpu>
   <iothreads>2</iothreads>
   <cputune>
