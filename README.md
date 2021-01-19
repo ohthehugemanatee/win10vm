@@ -23,6 +23,16 @@ You probably also want `virt-manager`, which includes a spice compatible viewer.
 
 At this point you can start the VM with `virt-manager` or `virsh` directly.
 
+### CPU Affinity
+
+The Libvirt configuration pins the qemu CPU, engine, and I/O threads to cores as specified in the XML, but it does not prevent system processes from running there. The easy way to do this:
+
+1) Install `cpuset`, a python tool to simplify working with kernel cgroups.
+2) Create a "shield" to move processes off of, and block new ones from starting on the threads reserved for the VM: `cset shield -c 0-5` (or whatever threads you use in you config)
+2) Move kernel processes off the shielded threads: `cset shield --kthread on`.
+
+When you're done with your VM you can get your threads back with `cset shield --reset`.
+
 
 ### Current benchmarks
 
