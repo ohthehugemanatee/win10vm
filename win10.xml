@@ -17,15 +17,15 @@ or other application using the libvirt API.
   <vcpu placement='static'>6</vcpu>
   <iothreads>2</iothreads>
   <cputune>
-    <vcpupin vcpu='0' cpuset='0'/>
-    <vcpupin vcpu='1' cpuset='1'/>
-    <vcpupin vcpu='2' cpuset='2'/>
-    <vcpupin vcpu='3' cpuset='3'/>
-    <vcpupin vcpu='4' cpuset='4'/>
-    <vcpupin vcpu='5' cpuset='5'/>
-    <emulatorpin cpuset='6-7'/>
-    <iothreadpin iothread='1' cpuset='6-7'/>
-    <iothreadpin iothread='2' cpuset='6-7'/>
+    <vcpupin vcpu='0' cpuset='1'/>
+    <vcpupin vcpu='1' cpuset='2'/>
+    <vcpupin vcpu='2' cpuset='3'/>
+    <vcpupin vcpu='3' cpuset='4'/>
+    <vcpupin vcpu='4' cpuset='5'/>
+    <vcpupin vcpu='5' cpuset='6'/>
+    <emulatorpin cpuset='1,7'/>
+    <iothreadpin iothread='1' cpuset='0,7'/>
+    <iothreadpin iothread='2' cpuset='0,7'/>
   </cputune>
   <os>
     <type arch='x86_64' machine='pc-q35-5.2'>hvm</type>
