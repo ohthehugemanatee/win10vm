@@ -19,6 +19,11 @@ You probably also want `virt-manager`, which includes a spice compatible viewer.
 1) clone the repository
 2) Create a disk image to use as your primary hard disk for the VM: `qemu-img create -f qcow2 -o size=60G my-vm-disk.img`. For better performance you may consider using `-f raw`, but you will lose features like snapshot, compression, etc.
 2) Edit `win10.xml` and change lines 49-50 with the location and type of your disk image, and lines 20-29 (`cputune`) and 49 (`topology`) to match the physical topology of your CPU.
+3) Either enable 1GB hugepages, or remove the `<memoryBacking>` stanza from `win10.xml`.  To enable 1GB hugepages:
+  * use the included `test-available-pagesize.sh` to check if your system will support 1GB hugepages.
+  * add `hugepagesz=1G default_hugepagesz=1G` to your kernel parameters in `/etc/default/grub.conf`
+  * reboot
+  * as root, allocate 8GB of hugepages with `echo 8 > /sys/kernel/mm/hugepages/hugepages-1048576kB/nr_hugepages` before starting the VM.
 3) Define the XMLs in this repository for libvirt. `virsh define /path/to/this/repo/networks/default.xml` and then `virsh define /path/to/this/repo/win10.xml`.
 
 At this point you can start the VM with `virt-manager` or `virsh` directly.
@@ -32,6 +37,10 @@ The Libvirt configuration pins the qemu CPU, engine, and I/O threads to cores as
 2) Move kernel processes off the shielded threads: `cset shield --kthread on`.
 
 When you're done with your VM you can get your threads back with `cset shield --reset`.
+
+
+### HugePages
+
 
 
 ### Current benchmarks
@@ -55,3 +64,4 @@ GPU: Fails to complete a 6 fps
 * CPU in host-passthrough mode
 * CPU threads selected to get maximum L2 cache (spread across as many cores as possible)
 * CPU cache in passthrough mode
+* Assign memory in 1GB hugepages
