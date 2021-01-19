@@ -53,3 +53,4 @@ GPU: Fails to complete a 6 fps
 * Raw disk image vs qcow2 (no difference on f2fs)
 * Scaling CPU cores - best to have the majority of your cores assigned to the VM, to ensure the host's CPU frequency governor scales when the VM is under load. I have 6 of 8 cores in the VM.
 * CPU in host-passthrough mode
+* CPU threads selected to get maximum L2 cache (spread across as many cores as possible)
