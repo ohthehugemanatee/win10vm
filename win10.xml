@@ -146,7 +146,7 @@ or other application using the libvirt API.
       </backend>
     </tpm>
     <graphics type='spice'>
-      <listen type='none'/>
+      <listen type='socket'/>
       <image compression='off'/>
       <gl enable='no'/>
     </graphics>
