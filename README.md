@@ -52,7 +52,7 @@ RAM Speed: 25314 MB/s
 Disk: 288
 Write Speed: 2799 MB/s
 Read Speed: 2403 MB/s 
-GPU: Fails to complete a 6 fps
+GPU: Fails to complete
 
 ### Performance improvements applied
 
