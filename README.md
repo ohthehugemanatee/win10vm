@@ -57,6 +57,7 @@ GPU: Fails to complete
 ### Performance improvements applied
 
 * Pin vCPUs, IO threads, and emulator thread to physical cores. No difference until you are using majority of your cores for the VM
+* Instructions for using cgroups to keep all other system tasks off of the VM cores
 * virtio drivers for everything. This especially benefits from pinned IO cores.
 * hyperV opions recommended for speed
 * Raw disk image vs qcow2 (no difference on f2fs)
@@ -65,3 +66,4 @@ GPU: Fails to complete
 * CPU threads selected to get maximum L2 cache (spread across as many cores as possible)
 * CPU cache in passthrough mode
 * Assign memory in 1GB hugepages
+* Enable 3d acceleration on the virtio GPU, but not the spice display
