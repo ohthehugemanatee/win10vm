@@ -1,6 +1,6 @@
 # My Windows 10 VM
 
-These are my QEMU configurations for a Windows 10 VM on libvirt. Emphasis is given on performance and satisfying requirements for my workplace IT security.
+These are my QEMU configurations for a Windows 10 VM on libvirt. Emphasis is on performance and satisfying requirements for my workplace IT security.
 
 Bare metal benchmark results using Phoronix are found in the root directory.
 
