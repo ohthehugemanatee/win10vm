@@ -1,6 +1,6 @@
 # My Windows 10 VM
 
-These are my QEMU configurations for a Windows 10 VM on libvirt. Emphasis is on performance and satisfying requirements for my workplace IT security.
+These are my libvirt configurations for running a single Windows 10 VM on QEMU/KVM. I use this VM to do my day-to-day work, including lots of Office365 and Teams calls. Emphasis here is on performance and satisfying requirements for my workplace IT security, in a single VM environment.
 
 Bare metal benchmark results using Phoronix are found in the root directory.
 
@@ -67,3 +67,11 @@ GPU: Fails to complete
 * CPU cache in passthrough mode
 * Assign memory in 1GB hugepages
 * Enable 3d acceleration on the virtio GPU, but not the spice display
+
+
+### References
+
+* [Arch wiki on libvirt](https://wiki.archlinux.org/index.php/Libvirt) - general explanation and basic performance tips
+* [Setting up your VM with virtio drivers and SPICE](https://github.com/infokiller/win10-vm) - good guide to installing the fastest drivers available in a way that your IT organization will appreciate.
+* [QEMU optimization from null src](https://null-src.com/posts/qemu-optimization/post.php) - very detailed article on optimization techniques I didn't find elsewhere, including cpu isolation with cgroups, changing your kernel scheduler, and other improvements.
+* [RedHat Virtualization Tuning and Optimization guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_tuning_and_optimization_guide/index) - A great in-depth manual for optimization, although mostly aimed at the server use case. 
