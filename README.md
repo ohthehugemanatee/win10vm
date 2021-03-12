@@ -21,12 +21,11 @@ You probably also want `virt-manager`, which includes a spice compatible viewer.
 2) Edit `win10.xml` and change lines 49-50 with the location and type of your disk image, and lines 20-29 (`cputune`) and 49 (`topology`) to match the physical topology of your CPU.
 3) Either enable 1GB hugepages, or remove the `<memoryBacking>` stanza from `win10.xml`.  To enable 1GB hugepages:
   * use the included `test-available-pagesize.sh` to check if your system will support 1GB hugepages.
-  * add `hugepagesz=1G default_hugepagesz=1G` to your kernel parameters in `/etc/default/grub.conf`
+  * add `hugepagesz=1G hugepages=8` to your kernel parameters in `/etc/default/grub.conf`
   * reboot
-  * as root, allocate 8GB of hugepages with `echo 8 > /sys/kernel/mm/hugepages/hugepages-1048576kB/nr_hugepages` before starting the VM.
 3) Define the XMLs in this repository for libvirt. `virsh define /path/to/this/repo/networks/default.xml` and then `virsh define /path/to/this/repo/win10.xml`.
 
-At this point you can start the VM with `virt-manager` or `virsh` directly.
+At this point you can start the VM with `virt-manager` or `virsh` directly. If you want to use the CPU and memory optimizations, read on!
 
 ### CPU Affinity
 
@@ -41,7 +40,18 @@ When you're done with your VM you can get your threads back with `cset shield --
 
 ### HugePages
 
+The Lbvirt configuration assigns the VM 8GB of RAM in contiguous 1GB blocks. Those blocks must be pre-allocated on the host before the VM starts, using the Linux "hugepages" system. If your kernel and CPU support hugepages (you can test this with the included `test-available-pagsize.sh` script), you could allocate those pages on the fly like this:
 
+`echo 8 | sudo tee -a /sys/kernel/mm/hugepages/hugepages-1048576kB/nr_hugepages`
+
+Unfortunately, so many large blocks of contiguous memory are hard to come by. Even on my system with 32GB of RAM, after a bit of use this becomes impossible due to normal memory fragmentation. After running that command above, you can see how many hugepages the kernel managed to allocate by `cat`ing the same file.
+
+If you want to use hugepages (and it's quite a nice performance boost!), here are your options:
+
+1) Add that `echo` command to your vm startup script, and reboot your host every time you want to start a VM, or
+2) Pre-allocate the 8 hugepages at boot time, reducing your host system's total RAM.
+
+The most reliable way to pre-allocate those hugepages is in your grub configuration. Edit `/etc/default/grub.conf` and add `hugepagesz=1G hugepages=8` to your kernel parameters line, and reboot once. 
 
 ### Current benchmarks
 
