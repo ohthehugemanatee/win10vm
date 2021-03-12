@@ -21,11 +21,11 @@ You probably also want `virt-manager`, which includes a spice compatible viewer.
 2) Edit `win10.xml` and change lines 49-50 with the location and type of your disk image, and lines 20-29 (`cputune`) and 49 (`topology`) to match the physical topology of your CPU.
 3) Either enable 1GB hugepages, or remove the `<memoryBacking>` stanza from `win10.xml`.  To enable 1GB hugepages:
   * use the included `test-available-pagesize.sh` to check if your system will support 1GB hugepages.
-  * add `hugepagesz=1G hugepages=8` to your kernel parameters in `/etc/default/grub.conf`
+  * add `hugepagesz=1G default_hugepagesz=1G hugepages=8` to your kernel parameters in `/etc/default/grub.conf`
   * reboot
 3) Define the XMLs in this repository for libvirt. `virsh define /path/to/this/repo/networks/default.xml` and then `virsh define /path/to/this/repo/win10.xml`.
 
-At this point you can start the VM with `virt-manager` or `virsh` directly. If you want to use the CPU and memory optimizations, read on!
+At this point you can start the VM with `virt-manager` or `virsh` directly, or even better: with the included `start-vm.sh`. If you have problems or want more detail about the CPU and memory optimizations, read on!
 
 ### CPU Affinity
 
@@ -51,7 +51,7 @@ If you want to use hugepages (and it's quite a nice performance boost!), here ar
 1) Add that `echo` command to your vm startup script, and reboot your host every time you want to start a VM, or
 2) Pre-allocate the 8 hugepages at boot time, reducing your host system's total RAM.
 
-The most reliable way to pre-allocate those hugepages is in your grub configuration. Edit `/etc/default/grub.conf` and add `hugepagesz=1G hugepages=8` to your kernel parameters line, and reboot once. 
+The most reliable way to pre-allocate those hugepages is in your grub configuration. Edit `/etc/default/grub.conf` and add `hugepagesz=1G default_hugepagesz=1G hugepages=8` to your kernel parameters line, and reboot once. 
 
 ### Current benchmarks
 
