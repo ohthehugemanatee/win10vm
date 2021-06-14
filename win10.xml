@@ -20,7 +20,7 @@ or other application using the libvirt API.
     </hugepages>
   </memoryBacking>
   <vcpu placement='static'>6</vcpu>
-  <iothreads>2</iothreads>
+  <iothreads>1</iothreads>
   <cputune>
     <vcpupin vcpu='0' cpuset='1'/>
     <vcpupin vcpu='1' cpuset='2'/>
@@ -30,7 +30,6 @@ or other application using the libvirt API.
     <vcpupin vcpu='5' cpuset='6'/>
     <emulatorpin cpuset='1,7'/>
     <iothreadpin iothread='1' cpuset='0,7'/>
-    <iothreadpin iothread='2' cpuset='0,7'/>
   </cputune>
   <os>
     <type arch='x86_64' machine='pc-q35-5.2'>hvm</type>
@@ -55,7 +54,7 @@ or other application using the libvirt API.
     <topology sockets='1' dies='1' cores='3' threads='2'/>
     <cache mode='passthrough'/>
   </cpu>
-  <clock offset='localtime'>
+  <clock offset='timezone' timezone='cet'>
     <timer name='rtc' tickpolicy='catchup'/>
     <timer name='pit' tickpolicy='delay'/>
     <timer name='hpet' present='no'/>
@@ -72,13 +71,15 @@ or other application using the libvirt API.
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
+      <source file='/home/ohthehugemanatee/Downloads/virtio-win-0.1.190.iso'/>
       <target dev='sdb' bus='sata'/>
       <readonly/>
       <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
     <disk type='file' device='disk'>
-      <driver name='qemu' type='raw' discard='unmap'/>
-      <source file='/home/ohthehugemanatee/Documents/win10.img'/>
+      <driver name='qemu' type='raw' discard='unmap' iothread='1'/>
+      <source file='/home/ohthehugemanatee/win10.img'/>
+      <backingStore/>
       <target dev='vda' bus='virtio'/>
       <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
     </disk>
@@ -113,6 +114,15 @@ or other application using the libvirt API.
       <model name='pcie-root-port'/>
       <target chassis='5' port='0x14'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x4'/>
+    </controller>
+    <controller type='pci' index='6' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='6' port='0x15'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x5'/>
+    </controller>
+    <controller type='pci' index='7' model='pcie-to-pci-bridge'>
+      <model name='pcie-pci-bridge'/>
+      <address type='pci' domain='0x0000' bus='0x06' slot='0x00' function='0x0'/>
     </controller>
     <controller type='virtio-serial' index='0'>
       <address type='pci' domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
@@ -159,6 +169,12 @@ or other application using the libvirt API.
       </model>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
     </video>
+    <hostdev mode='subsystem' type='pci' managed='yes'>
+      <source>
+        <address domain='0x0000' bus='0x00' slot='0x14' function='0x0'/>
+      </source>
+      <address type='pci' domain='0x0000' bus='0x07' slot='0x01' function='0x0'/>
+    </hostdev>
     <redirdev bus='usb' type='spicevmc'>
       <address type='usb' bus='0' port='2'/>
     </redirdev>
